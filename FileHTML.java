@@ -27,7 +27,7 @@ public class FileHTML {
         String htmlFileName = scanner.next();
         PrintWriter pw = new PrintWriter(new FileWriter(htmlFileName+".html"));
 
-        pw.println("<head>\n" +
+         pw.println("<head>\n" +
                 "    <style>\n" +
                 "                table, th, td {\n" +
                 "            border: 1px solid black;\n" +
@@ -36,17 +36,25 @@ public class FileHTML {
                 "        th, td {\n" +
                 "            padding: 10px;\n" +
                 "        }\n" +
+                "        body{background-color: grey;}"+
                 "</style>");
+        pw.println("<body>");
+        pw.println("<img src =\"http://smslaw.com.au/wp-content/uploads/2014/07/employee.jpg\" alt=\"employees\" width=\"555\n" +
+                "\">");
         pw.println("<TABLE bgcolor=#D3D3D3");
-        pw.println("<TABLE BORDER><TR><TH>Name<TH>Surname<TH>Sex<TH>Department<TH>Salary<TH>Age</TR>");
+        pw.println("<TABLE BORDER><TR><TH>nb<TH>Name<TH>Surname<TH>Sex<TH>Department<TH>Salary<TH>Age</TR>");
+        pw.println("<h1> All Employees</h1>");
+        int i=0;
         for (Employees employees:readListOfEmployees) {
-            pw.println("<TR><TD>" + employees.getName() + "<TD>" + employees.getSurname()+
+            i=i+1;
+            pw.println("<TR><TD>"+i+"<TD>"+ employees.getName() + "<TD>" + employees.getSurname()+
                     "<TD>"+employees.getSex()+"<TD>"+employees.getDepartment()+
                     "<TD>"+employees.getMoney()+"<TD>"+employees.getAge());
         }
         pw.println("</TABLE>");
+        pw.println("</body>");
         pw.close();
-        System.out.println("HTML file called \"Employees\" has been created");
+        System.out.println("HTML file called "+htmlFileName +" has been created");
     }
 }
 
